@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.*;
+
 /** @author xzinoviou created 11/7/2019 */
 @RestController
 @RequestMapping("api/book")
@@ -31,6 +33,16 @@ public class BookController {
 
   @PostMapping
   public ResponseEntity<Book> createBook(@RequestBody Book book) {
-    return new ResponseEntity<>(bookService.create(book), HttpStatus.CREATED);
+    return new ResponseEntity<>(bookService.create(book), CREATED);
+  }
+
+  @PutMapping
+  public ResponseEntity<Book> updateBook(@RequestBody Book book) {
+    return ResponseEntity.ok(bookService.update(book));
+  }
+
+  @DeleteMapping("/{id}")
+  public void deleteBook(@PathVariable Long id) {
+    bookService.delete(id);
   }
 }

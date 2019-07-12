@@ -1,45 +1,28 @@
 package com.xzinoviou.bookservice.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /** @author xzinoviou created 11/7/2019 */
 @Entity
-@Table(name = "book")
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
 
   @Id
-  @NotNull
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(unique = true, length = 13, nullable = false)
+  private String isbn;
 
   private String title;
 
   private String author;
-
-  public Book() {}
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public String getAuthor() {
-    return author;
-  }
-
-  public void setAuthor(String author) {
-    this.author = author;
-  }
 }
