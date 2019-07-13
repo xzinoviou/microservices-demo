@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: zuul-service
+
+server:
+  port: 8010
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka
+zuul:
+  routes:
+    book-service:
+      path: /book-service/**
+      serviceId: BOOK-SERVICE
+    music-service:
+      path: /music-service/**
+      serviceId: MUSIC-SERVICE
+  ignored-services: '*'
