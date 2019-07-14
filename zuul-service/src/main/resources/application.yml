@@ -2,6 +2,8 @@ spring:
   application:
     name: zuul-service
 
+
+
 server:
   port: 8010
 
@@ -14,14 +16,16 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8001/eureka
+      defaultZone: http://localhost:8001/eureka/
+
 zuul:
   routes:
-    prefix: services/
     book-service:
       path: /book-service/**
+      url: http://localhost:8002/api
       serviceId: BOOK-SERVICE
     music-service:
       path: /music-service/**
+      url: http://localhost:8003/api
       serviceId: MUSIC-SERVICE
   ignored-services: '*'
