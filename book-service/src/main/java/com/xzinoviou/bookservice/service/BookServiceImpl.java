@@ -1,8 +1,10 @@
 package com.xzinoviou.bookservice.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xzinoviou.bookservice.exception.JpaException;
 import com.xzinoviou.bookservice.model.Book;
 import com.xzinoviou.bookservice.repository.BookRepository;
+import com.xzinoviou.common.microservices.demo.dto.BookRequestDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +14,11 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
   private final BookRepository bookRepository;
+  private final ObjectMapper objectMapper;
 
-  public BookServiceImpl(BookRepository bookRepository) {
+  public BookServiceImpl(BookRepository bookRepository, ObjectMapper objectMapper) {
     this.bookRepository = bookRepository;
+    this.objectMapper = objectMapper;
   }
 
   @Override
@@ -30,7 +34,8 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  public Book create(Book book) {
+  public Book create(BookRequestDto dto) {
+    Book book = objectMapper.convertValue(dto, Book.class);
     return bookRepository.save(book);
   }
 
@@ -40,7 +45,8 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  public Book update(Book book) {
+  public Book update(BookRequestDto dto) {
+    Book book = objectMapper.convertValue(dto, Book.class);
     return bookRepository.save(book);
   }
 }

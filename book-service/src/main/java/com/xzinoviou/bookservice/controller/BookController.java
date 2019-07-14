@@ -2,6 +2,7 @@ package com.xzinoviou.bookservice.controller;
 
 import com.xzinoviou.bookservice.model.Book;
 import com.xzinoviou.bookservice.service.BookService;
+import com.xzinoviou.common.microservices.demo.dto.BookRequestDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,13 +32,13 @@ public class BookController {
   }
 
   @PostMapping
-  public ResponseEntity<Book> createBook(@RequestBody Book book) {
-    return new ResponseEntity<>(bookService.create(book), CREATED);
+  public ResponseEntity<Book> createBook(@RequestBody BookRequestDto dto) {
+    return new ResponseEntity<>(bookService.create(dto), CREATED);
   }
 
   @PutMapping
-  public ResponseEntity<Book> updateBook(@RequestBody Book book) {
-    return ResponseEntity.ok(bookService.update(book));
+  public ResponseEntity<Book> updateBook(@RequestBody BookRequestDto dto) {
+    return ResponseEntity.ok(bookService.update(dto));
   }
 
   @DeleteMapping("/{id}")

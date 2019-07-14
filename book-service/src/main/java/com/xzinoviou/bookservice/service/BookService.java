@@ -1,6 +1,7 @@
 package com.xzinoviou.bookservice.service;
 
 import com.xzinoviou.bookservice.model.Book;
+import com.xzinoviou.common.microservices.demo.dto.BookRequestDto;
 
 import java.util.List;
 
@@ -11,9 +12,9 @@ public interface BookService {
 
   List<Book> getAllBooks();
 
-  Book create(Book book);
+  Book create(BookRequestDto dto);
 
   void delete(Long id);
 
-  Book update(Book book);
+  Book update(BookRequestDto dto);
 }
