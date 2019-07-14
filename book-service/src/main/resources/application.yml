@@ -24,6 +24,9 @@ spring:
   flyway:
     enabled: true
     locations: classpath:flyway
+  data:
+    rest:
+      basePath: /api
 
 server:
   port: 8002

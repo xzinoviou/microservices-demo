@@ -2,17 +2,16 @@ package com.xzinoviou.bookservice.controller;
 
 import com.xzinoviou.bookservice.model.Book;
 import com.xzinoviou.bookservice.service.BookService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.CREATED;
 
 /** @author xzinoviou created 11/7/2019 */
 @RestController
-@RequestMapping("api/book")
+@RequestMapping("${spring.data.rest.base-path}/book")
 public class BookController {
 
   private final BookService bookService;
