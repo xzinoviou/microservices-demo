@@ -28,4 +28,8 @@ zuul:
       path: /music-service/**
       url: http://localhost:8003/api
       serviceId: MUSIC-SERVICE
+    auth-service:
+      path: /auth/**
+      serviceId: AUTH-SERVICE
+      sensitive-headers: Cookie, Set-Cookie
   ignored-services: '*'
